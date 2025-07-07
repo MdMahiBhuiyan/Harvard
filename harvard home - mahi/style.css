@@ -1,0 +1,455 @@
+:root {
+  --harvard-crimson: #990f2c; /* deeper primary crimson */
+  --harvard-crimson-alt: #d81e3d; /* vibrant hover crimson */
+  --text-dark: #121212; /* almost‑black headings */
+  --text-body: #2a2a2a; /* richer body copy */
+  --text-subtle: #555555; /* subtler captions */
+  --background-light: #f3f3f3; /* warmer card bg */
+  --border-color: #d9d9d9; /* lighter borders */
+  --white: #ffffff;
+  --text-white: #ffffff; /* explicit white text var */
+}
+
+/* Everything below is identical — only color variables (and
+   two direct color values) have been updated for a refreshed
+   palette. */
+
+/* ===============================
+   RESET & TYPOGRAPHY
+=============================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Lora", serif;
+  color: var(--text-body);
+  line-height: 1.6;
+  background: var(--white);
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Trueno", sans-serif;
+  color: var(--text-dark);
+  line-height: 1.25;
+  margin-bottom: 0.5em;
+}
+h1 {
+  font-size: 3.75rem;
+  line-height: 4.625rem;
+  font-weight: 700;
+}
+h2 {
+  font-size: 2rem;
+  line-height: 2.625rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15rem;
+  margin-top: 1.5em;
+}
+h3 {
+  font-size: 1.25rem;
+  line-height: 1.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09375rem;
+}
+p {
+  margin-bottom: 1em;
+  font-size: 1.1875rem;
+  line-height: 2rem;
+}
+
+a {
+  color: var(--harvard-crimson);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+a:hover {
+  color: var(--harvard-crimson-alt);
+  text-decoration: underline;
+}
+
+.button,
+.button-small {
+  font-family: "Trueno", sans-serif;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.button {
+  background: var(--harvard-crimson);
+  color: var(--white);
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.button:hover {
+  background: var(--harvard-crimson-alt);
+}
+.button-small {
+  background: transparent;
+  border: 1px solid var(--harvard-crimson);
+  color: var(--harvard-crimson);
+  padding: 8px 15px;
+  border-radius: 3px;
+  font-size: 0.9rem;
+}
+.button-small:hover {
+  background: var(--harvard-crimson);
+  color: var(--white);
+}
+
+.container {
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 20px;
+}
+
+/* ===============================
+   HEADER & SLIDE‑DOWN NAVBAR
+=============================== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: var(--white);
+  border-bottom: 1px solid var(--border-color);
+  padding: 20px 0;
+  transition: background 0.3s;
+}
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.site-logo img {
+  height: 42px;
+}
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 1.9rem;
+  color: var(--text-dark);
+  cursor: pointer;
+  z-index: 1100;
+}
+
+.main-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  background: var(--text-dark);
+  transform: translateY(-100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+.main-nav.active {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+}
+.nav-item {
+  margin: 10px 0;
+}
+.nav-link {
+  font-family: "Trueno", sans-serif;
+  font-weight: 600;
+  color: var(--white);
+  font-size: 1rem;
+  padding: 5px 20px;
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 20px;
+  width: 0;
+  height: 2px;
+  background: var(--harvard-crimson);
+  transition: width 0.3s;
+}
+.nav-link:hover::after {
+  width: calc(100% - 40px);
+}
+
+/* ===============================
+   HERO / SPLASH SECTION
+=============================== */
+.hero-section {
+  background: url("https://www.harvard.edu/wp-content/uploads/2023/07/harvard-campus-fall-2023-scaled.jpg")
+    center/cover no-repeat;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--white);
+  position: relative;
+  padding: 100px 20px;
+}
+.hero-section::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+.hero-title {
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.hero-description {
+  font-size: 1.5rem;
+  margin-bottom: 30px;
+}
+
+/* ===============================
+   REUSABLE CARD / GRID
+=============================== */
+.section-title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+.section-intro {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 40px;
+  font-size: 1.25rem;
+}
+
+.card-grid,
+.news-grid,
+.about-grid {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.content-card,
+.about-card,
+.news-item {
+  background: var(--background-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.card-body,
+.news-item-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.card-title {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+}
+.card-description {
+  font-size: 1rem;
+  color: var(--text-body);
+  line-height: 1.5;
+  flex: 1;
+}
+
+.news-item img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+.news-title {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.news-date {
+  font-size: 0.9rem;
+  color: var(--text-subtle);
+  margin-bottom: 10px;
+}
+.news-summary {
+  flex: 1;
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* ===============================
+   IMPACT STATS
+=============================== */
+.impact-stats {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+  text-align: center;
+}
+.stat-item {
+  flex: 1 1 200px;
+  margin: 20px;
+}
+.stat-number {
+  font-family: "Trueno", sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: var(--harvard-crimson);
+}
+.stat-label {
+  font-size: 1.1rem;
+  color: var(--text-subtle);
+}
+
+/* ===============================
+   INNOVATION LABS ASIDE
+=============================== */
+.innovation-labs-aside {
+  background: var(--harvard-crimson);
+  color: var(--white);
+  text-align: center;
+  padding: 60px 30px;
+  border-radius: 8px;
+  margin-top: 60px;
+}
+.aside-title {
+  font-size: 2rem;
+  margin-bottom: 16px;
+  color: var(--white);
+}
+.aside-description {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+.aside-list {
+  list-style: none;
+  font-size: 1.1rem;
+  margin-bottom: 40px;
+}
+.aside-list li {
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   FOOTER
+=============================== */
+.site-footer {
+  background: var(--text-dark);
+  color: var(--white);
+  text-align: center;
+  padding: 40px 0;
+}
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+.footer-links a {
+  color: var(--white);
+  font-size: 0.9rem;
+  transition: color 0.3s;
+}
+.footer-links a:hover {
+  color: var(--harvard-crimson-alt);
+}
+.social-links a img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+.copyright {
+  font-size: 0.85rem;
+  color: var(--text-subtle);
+}
+
+/* ===============================
+   MEDIA QUERIES (unchanged)
+=============================== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.9375rem;
+  }
+  p {
+    font-size: 1.0625rem;
+    line-height: 1.8125rem;
+  }
+  .main-nav {
+    position: static;
+    display: none;
+  }
+  .main-nav.active {
+    display: block;
+  }
+  .nav-list {
+    align-items: center;
+  }
+  .hero-description {
+    font-size: 1.2rem;
+  }
+  .card-grid,
+  .news-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+  }
+  .impact-stats {
+    flex-direction: column;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .menu-toggle {
+    display: none;
+  }
+  .main-nav {
+    position: initial;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    background: transparent;
+  }
+  .nav-list {
+    flex-direction: row;
+    padding: 0;
+  }
+  .nav-item {
+    margin: 0 15px;
+  }
+  .card-grid,
+  .news-grid,
+  .about-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
