@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #fff;
+  color: #333;
+}
+
+.flag {
+  width: 16px;
+  vertical-align: middle;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: #000;
+  color: white;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.menu a {
+  margin-right: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.right-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.right-menu a {
+  color: white;
+  text-decoration: none;
+}
+
+.right-menu button {
+  background-color: #f60;
+  border: none;
+  padding: 6px 12px;
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.hero {
+  position: relative;
+  background: url('https://img.freepik.com/free-photo/group-businesspeople-meeting-office_1303-15866.jpg') center/cover no-repeat;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 60px;
+  color: white;
+}
+
+.overlay {
+  max-width: 600px;
+}
+
+.learn {
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  opacity: 0.8;
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.search-bar {
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.search-bar input {
+  flex: 1;
+  padding: 12px;
+  border-radius: 25px 0 0 25px;
+  border: none;
+}
+
+.search-bar button {
+  padding: 12px 15px;
+  background: white;
+  border: none;
+  cursor: pointer;
+}
+
+.search-btn {
+  background-color: #f60;
+  color: white;
+  border-radius: 0 25px 25px 0;
+  margin-left: -5px;
+}
+
+.tags {
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+.tags button {
+  margin-left: 8px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #444;
+  color: white;
+  border-radius: 15px;
+  font-size: 0.8rem;
+}
+
+.features {
+  background-color: #3a1d0f;
+  color: white;
+  display: flex;
+  justify-content: space-around;
+  padding: 40px 20px;
+  flex-wrap: wrap;
+}
+
+.feature {
+  width: 220px;
+  margin: 10px;
+}
+
+.feature h3 {
+  margin-bottom: 10px;
+}
