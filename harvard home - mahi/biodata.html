@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Bio Data Generator</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+      body {
+        background: linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%);
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        min-height: 100vh;
+        padding: 40px 20px;
+        color: #1e1e2f;
+      }
+      .container {
+        background: #fff;
+        border-radius: 18px;
+        box-shadow: 0 14px 35px rgba(102, 166, 255, 0.35);
+        width: 100%;
+        max-width: 600px;
+        padding: 30px 40px;
+      }
+      h1 {
+        text-align: center;
+        margin-bottom: 25px;
+        font-weight: 700;
+        color: #1e40af;
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+      }
+      label {
+        font-weight: 600;
+        margin-bottom: 6px;
+        display: block;
+        color: #334155;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="date"],
+      input[type="tel"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px 15px;
+        border-radius: 12px;
+        border: 2px solid #cbd5e1;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        font-family: "Poppins", sans-serif;
+        resize: vertical;
+      }
+      input[type="text"]:focus,
+      input[type="email"]:focus,
+      input[type="date"]:focus,
+      input[type="tel"]:focus,
+      select:focus,
+      textarea:focus {
+        border-color: #3b82f6;
+        outline: none;
+      }
+      .radio-group {
+        display: flex;
+        gap: 24px;
+        margin-top: 6px;
+      }
+      .radio-group label {
+        font-weight: 500;
+        color: #334155;
+        cursor: pointer;
+      }
+      input[type="radio"] {
+        accent-color: #3b82f6;
+        margin-right: 8px;
+        cursor: pointer;
+        vertical-align: middle;
+      }
+      /* File upload */
+      .photo-upload {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .photo-upload input[type="file"] {
+        border: 2px solid #cbd5e1;
+        padding: 8px 10px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-family: "Poppins", sans-serif;
+        font-size: 1rem;
+        color: #475569;
+      }
+      .photo-preview {
+        width: 100px;
+        height: 100px;
+        border-radius: 14px;
+        object-fit: cover;
+        border: 2px solid #3b82f6;
+        background: #e0e7ff;
+        box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+      }
+
+      button {
+        background-color: #3b82f6;
+        color: white;
+        border: none;
+        padding: 15px 0;
+        border-radius: 14px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(59, 130, 246, 0.6);
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+      }
+      button:hover {
+        background-color: #2563eb;
+        box-shadow: 0 8px 20px rgba(37, 99, 235, 0.7);
+      }
+
+      /* Result section */
+      #result {
+        margin-top: 40px;
+        background: #f0f9ff;
+        border-radius: 16px;
+        padding: 25px 30px;
+        box-shadow: 0 12px 25px rgba(59, 130, 246, 0.15);
+        color: #1e293b;
+        font-family: "Poppins", sans-serif;
+      }
+      #result h2 {
+        margin-bottom: 18px;
+        color: #2563eb;
+        text-align: center;
+      }
+      #result img {
+        display: block;
+        max-width: 120px;
+        margin: 0 auto 18px;
+        border-radius: 12px;
+        box-shadow: 0 5px 12px rgba(37, 99, 235, 0.3);
+        object-fit: cover;
+      }
+      #result p {
+        font-size: 1.05rem;
+        margin-bottom: 8px;
+      }
+      #result span {
+        font-weight: 600;
+        color: #1e40af;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Bio Data Generator</h1>
+      <form id="bioForm" action="save_biodata.php" method="POST" enctype="multipart/form-data">
+
+        <label for="fullName">Full Name *</label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          placeholder="Enter your full name"
+          required
+        />
+
+        <label for="dob">Date of Birth *</label>
+        <input type="date" id="dob" name="dob" required />
+
+        <label>Gender *</label>
+        <div class="radio-group">
+          <label
+            ><input type="radio" name="gender" value="Male" required />
+            Male</label
+          >
+          <label
+            ><input type="radio" name="gender" value="Female" /> Female</label
+          >
+          <label
+            ><input type="radio" name="gender" value="Other" /> Other</label
+          >
+        </div>
+
+        <label for="email">Email *</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="example@email.com"
+          required
+        />
+
+        <label for="phone">Phone Number *</label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          placeholder="+8801XXXXXXXXX"
+          required
+        />
+
+        <label for="maritalStatus">Marital Status *</label>
+        <div class="radio-group">
+          <label
+            ><input type="radio" name="maritalStatus" value="Single" required />
+            Single</label
+          >
+          <label
+            ><input type="radio" name="maritalStatus" value="Married" />
+            Married</label
+          >
+          <label
+            ><input type="radio" name="maritalStatus" value="Other" />
+            Other</label
+          >
+        </div>
+
+        <label for="address">Address</label>
+        <textarea
+          id="address"
+          name="address"
+          rows="3"
+          placeholder="Your current address"
+        ></textarea>
+
+        <label>Upload Your Photo *</label>
+        <div class="photo-upload">
+          <input
+            type="file"
+            id="photo"
+            name="photo"
+            accept="image/*"
+            required
+          />
+          <img
+            id="photoPreview"
+            class="photo-preview"
+            src=""
+            alt="Photo Preview"
+            style="display: none"
+          />
+        </div>
+
+        <button type="submit">Generate Bio Data</button>
+      </form>
+
+      <section id="result" style="display: none">
+        <h2>Your Bio Data</h2>
+        <img id="resultPhoto" src="" alt="User Photo" />
+        <p><span>Full Name:</span> <span id="resName"></span></p>
+        <p><span>Date of Birth:</span> <span id="resDOB"></span></p>
+        <p><span>Gender:</span> <span id="resGender"></span></p>
+        <p><span>Email:</span> <span id="resEmail"></span></p>
+        <p><span>Phone:</span> <span id="resPhone"></span></p>
+        <p><span>Marital Status:</span> <span id="resMarital"></span></p>
+        <p><span>Address:</span> <span id="resAddress"></span></p>
+      </section>
+    </div>
+
+    <script>
+      const photoInput = document.getElementById("photo");
+      const photoPreview = document.getElementById("photoPreview");
+
+      photoInput.addEventListener("change", () => {
+        const file = photoInput.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            photoPreview.src = e.target.result;
+            photoPreview.style.display = "block";
+          };
+          reader.readAsDataURL(file);
+        } else {
+          photoPreview.style.display = "none";
+          photoPreview.src = "";
+        }
+      });
+
+      const form = document.getElementById("bioForm");
+      const resultSection = document.getElementById("result");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        // Collect data
+        const fullName = form.fullName.value.trim();
+        const dob = form.dob.value;
+        const gender = form.gender.value;
+        const email = form.email.value.trim();
+        const phone = form.phone.value.trim();
+        const maritalStatus = form.maritalStatus.value;
+        const address = form.address.value.trim() || "N/A";
+
+        // Photo
+        const photoFile = photoInput.files[0];
+        if (!photoFile) {
+          alert("Please upload your photo.");
+          return;
+        }
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          document.getElementById("resultPhoto").src = e.target.result;
+        };
+        reader.readAsDataURL(photoFile);
+
+        // Set text data
+        document.getElementById("resName").textContent = fullName;
+        document.getElementById("resDOB").textContent = new Date(
+          dob
+        ).toLocaleDateString();
+        document.getElementById("resGender").textContent = gender;
+        document.getElementById("resEmail").textContent = email;
+        document.getElementById("resPhone").textContent = phone;
+        document.getElementById("resMarital").textContent = maritalStatus;
+        document.getElementById("resAddress").textContent = address;
+
+        // Show result
+        resultSection.style.display = "block";
+
+        // Scroll to result
+        resultSection.scrollIntoView({ behavior: "smooth" });
+      });
+    </script>
+  </body>
+</html>
